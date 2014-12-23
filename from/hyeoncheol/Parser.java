@@ -1,6 +1,7 @@
 package from.hyeoncheol;
 
 import java.io.InputStream;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.List;
 import from.hyeoncheol.Solver;
@@ -15,7 +16,7 @@ public abstract class Parser<T> {
 		scan.useDelimiter("\\s+");
 	}
 
-	abstract List<T> parseCase() throws IOException;
+	protected abstract List<T> parseCase() throws IOException;
 
 	public void parseSolve(Solver<T> solver) {
 		try {

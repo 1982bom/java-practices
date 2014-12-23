@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Comparator;
 import from.hyeoncheol.Solver;
+import from.hyeoncheol.Parser;
 
 /**
  * solution for Alogrithm Problems Solving Strategies, first volume  10.2
  */
 
 class LunchBox {
-	public int mealTime, heatupTime;
+	public int mealTime, heatTime;
 }
 
 class MySolver extends Solver<LunchBox> {
@@ -27,11 +28,14 @@ class MySolver extends Solver<LunchBox> {
 						l0.mealTime < l1.mealTime ? 1 : -1);
 			}
 		});
-		int t = 0, i;
-		for (i = 0; i < list.size(); i++)
-			t += list.get(i).heatupTime;
-		t += list.get(i-1).mealTime;
-		out.println(t);
+
+		int heatTime = 0, endTime = 0;
+		for (int i = 0; i < list.size(); i++) {
+			heatTime += list.get(i).heatTime;
+			endTime = Math.max(endTime, heatTime + list.get(i).mealTime);
+		}
+
+		out.println(endTime);
 	}
 }
 
@@ -40,12 +44,12 @@ class MyParser extends Parser<LunchBox> {
 		super(in);
 	}
 
-	List<LunchBox> parseCase() throws IOException {
+	protected List<LunchBox> parseCase() throws IOException {
 		int count = scan.nextInt();
 		ArrayList<LunchBox> list = new ArrayList<LunchBox>(count);
 		for (int i = 0; i < count; i++) {
 			LunchBox box = new LunchBox();
-			box.heatupTime = scan.nextInt();
+			box.heatTime = scan.nextInt();
 			list.add(box);
 		}
 		for (int i = 0; i < count; i++)
