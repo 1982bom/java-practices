@@ -61,6 +61,6 @@ class MyParser extends Parser<LunchBox> {
 public class HeatLunchBox {
 	public static void main(String[] args) {
 		MyParser parser = new MyParser(System.in);
-		parser.parseSolve(new MySolver(System.out));
+		parser.solve(new MySolver(System.out));
 	}
 }

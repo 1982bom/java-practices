@@ -18,7 +18,7 @@ public abstract class Parser<T> {
 
 	protected abstract List<T> parseCase() throws IOException;
 
-	public void parseSolve(Solver<T> solver) {
+	public void solve(Solver<T> solver) {
 		try {
 			int count = scan.nextInt();
 			for (int i = 0; i < count; i++) {
