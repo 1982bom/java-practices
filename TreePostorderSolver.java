@@ -9,27 +9,8 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 import from.hyeoncheol.Parser;
+import from.hyeoncheol.IntegerMatrixParser;
 import from.hyeoncheol.Solver;
-
-class IntegerArrayParser extends Parser<Integer[]> {
-	public IntegerArrayParser(InputStream in) {
-		super(in);
-	}
-
-	protected List<Integer[]> parseCase() {
-		int count = scan.nextInt();
-		ArrayList<Integer[]> list = new ArrayList<Integer[]>(2);
-		Integer[] ia = new Integer[count];
-		for (int i = 0; i < count; i++) 
-			ia[i] = scan.nextInt();
-		list.add(ia);
-		ia = new Integer[count];
-		for (int i = 0; i < count; i++)
-			ia[i] = scan.nextInt();
-		list.add(ia);
-		return list;
-	}
-}
 
 public class TreePostorderSolver extends Solver<Integer[]> {
 	List<Integer> postorder, preorder;
@@ -66,7 +47,7 @@ public class TreePostorderSolver extends Solver<Integer[]> {
 	}
 
 	public static void main(String[] args) {
-		IntegerArrayParser parser = new IntegerArrayParser(System.in);
+		IntegerMatrixParser parser = new IntegerMatrixParser(System.in, 2, 0);
 		parser.solve(new TreePostorderSolver(System.out));
 	}
 	
